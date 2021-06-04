@@ -3,7 +3,6 @@ import './App.css';
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
-import Dialogs from "./components/dialog/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import DialogsContainer from "./components/dialog/DialogsContainer";
 
@@ -15,8 +14,8 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
-                    <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
-                    <Route path='/profile' render={() => <Profile store={props.store}/>}/>
+                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                    <Route path='/profile' render={() => <Profile/>}/>
                     {/*<Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/*/}
