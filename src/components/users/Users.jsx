@@ -6,9 +6,11 @@ import userPhoto from "../../assets/images/user-avatar.png"
 class Users extends React.Component {
     constructor(props) {
         super(props);
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(resp => this.props.setUsers(resp.data.items));
     }
 
+    componentDidMount() {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(resp => this.props.setUsers(resp.data.items));
+    }
 
     render() {
         return <div>
