@@ -3,6 +3,15 @@
     background-color: aquamarine;
 }
 
-.header img{
+.header img {
     width: 100px;
 }
+
+.loginBlock {
+    float: right;
+}
+
+.loginBlock a {
+    color: black;
+}
+
