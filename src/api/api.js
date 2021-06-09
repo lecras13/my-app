@@ -16,24 +16,24 @@ export const usersApi = {
             })
     },
 
-    getProfileUser(userId) {
+    getProfile(userId) {
         return instance.get(`profile/` + userId)
             .then(response => {
                 return response.data;
             });
     },
 
-  /*  followUser(userId) {
-        return instance.post(`follow/${userId}`)
-            .then(response => {
-                return response.data;
-            });
+    followUser(userId) {
+        return instance.post(`follow/${userId}`);
     },
 
     unfollowUser(userId) {
-        return instance.delete(`unfollow/${userId}`)
-            .then(response => {
-                return response.data;
-            });
-    },*/
+        return instance.delete(`unfollow/${userId}`);
+    },
+}
+
+export const authApi = {
+   me(){
+       return instance.get(`auth/me`);
+   }
 }
