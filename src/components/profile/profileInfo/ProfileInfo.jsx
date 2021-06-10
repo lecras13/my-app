@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../../assets/common/preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -9,11 +10,15 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div>
+            {/*<div>
                 <img src='https://www.helmholtz.ai/fileadmin/HAICU/IMG/HMGU_AI_Keyvisual_quer_ohneText.jpg'/>
-            </div>
+            </div>*/}
             <div className={s.descriptionBlock}>
                 <img src={props.profile.photos.large}/>
+
+                <ProfileStatus status={"dasdasd"}/>
+
+
                 <div>{props.profile.aboutMe}</div>
 
                 <div>{props.profile.contacts.facebook}</div>
