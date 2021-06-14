@@ -1,7 +1,6 @@
 import {profileApi} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -11,7 +10,7 @@ let initialState = {
         {id: 2, message: "How are you?", likesCount: 5},
         {id: 3, message: "Fine", likesCount: 5},
     ],
-    newPostText: 'it-kamasutra',
+
     profile: null,
     status: "",
 };
@@ -21,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             let newPost = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostElement,
                 likesCount: 0
             };
             return {
@@ -30,19 +29,14 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: '',
             };
         }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText,
-            }
-        }
+
         case SET_USER_PROFILE: {
             return {
                 ...state,
                 profile: action.profile,
             }
         }
-        case SET_STATUS:{
+        case SET_STATUS: {
             return {
                 ...state,
                 status: action.status,
@@ -53,9 +47,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPostActionCreator = (newPostElement) => ({type: ADD_POST, newPostElement})
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
@@ -81,7 +73,7 @@ export const getStatus = (userId) => {
 export const updateStatus = (status) => {
     return (dispatch) => {
         profileApi.updateStatus(status).then(resp => {
-            if(resp.data.resultCode===0){
+            if (resp.data.resultCode === 0) {
                 dispatch(setStatus(status));
             }
 
